@@ -1,0 +1,143 @@
+package me.hieu.core.profile;
+
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.ReplaceOptions;
+import lombok.Getter;
+import lombok.Setter;
+import me.hieu.core.Core;
+import me.hieu.core.grant.Grant;
+import me.hieu.core.grant.GrantDeserializer;
+import me.hieu.core.grant.GrantSerializer;
+import me.hieu.core.punishment.Punishment;
+import me.hieu.core.punishment.PunishmentDeserializer;
+import me.hieu.core.punishment.PunishmentSerializer;
+import me.hieu.core.punishment.PunishmentType;
+import me.hieu.core.rank.Rank;
+import me.hieu.core.util.ConsoleUtil;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.permissions.PermissionAttachment;
+
+import java.util.*;
+
+/**
+ * Author: Le Thanh Hieu
+ * Date: 01/10/2024
+ */
+
+@Getter @Setter
+public class Profile {
+
+    private UUID uniqueId;
+    private String name;
+    private List<Grant> grants;
+    private List<Punishment> punishments;
+    private List<String> permissions;
+
+    public Profile(UUID uuid){
+        this.uniqueId = uuid;
+        name = Bukkit.getOfflinePlayer(uuid).getName();
+        grants = new ArrayList<>();
+        punishments = new ArrayList<>();
+        permissions = new ArrayList<>();
+        load();
+    }
+
+    public Profile(String name){
+        uniqueId = Bukkit.getOfflinePlayer(name).getUniqueId();
+        this.name = name;
+        grants = new ArrayList<>();
+        punishments = new ArrayList<>();
+        permissions = new ArrayList<>();
+        load();
+    }
+
+    public void calibratePermissions(){
+        List<String> totalPermissions = new ArrayList<>();
+        Player player = Bukkit.getPlayer(uniqueId);
+        if (player == null) return;
+        PermissionAttachment attachment = player.addAttachment(Core.getInstance());
+        Rank rank = getActiveRank();
+        for (UUID inheritance : rank.getInheritances()){
+            Rank inheritanceRank = Core.getInstance().getRankHandler().getRankByUniqueId(inheritance);
+            totalPermissions.addAll(inheritanceRank.getPermissions());
+        }
+        totalPermissions.addAll(rank.getPermissions());
+        totalPermissions.addAll(permissions);
+        for (String permission : totalPermissions){
+            attachment.setPermission(permission, true);
+        }
+    }
+
+    public String getFormattedName(){
+        return getActiveRank().getColor() + name;
+    }
+
+    public String getChatFormattedName(){
+        return getActiveRank().getPrefix() + name + getActiveRank().getSuffix();
+    }
+
+    public Rank getActiveRank(){
+        Collections.sort(grants);
+        for (Grant grant : grants){
+            if (!grant.isExpired() && !grant.isPardoned()) return grant.getGrantRank();
+        }
+        return null;
+    }
+
+    public Punishment getActivePunishment(PunishmentType type){
+        for (Punishment punishment : punishments){
+            if (!punishment.isExpired() && !punishment.isPardoned() && punishment.getType() == type) return punishment;
+        }
+        return null;
+    }
+
+    private void load(){
+        Bson filter = Filters.eq("uniqueId", uniqueId.toString());
+        Document document = Core.getInstance().getProfileHandler().getCollection().find(filter).first();
+        if (document == null){
+            Rank rank = Core.getInstance().getRankHandler().getRankByName("Default");
+            grants.add(new Grant(UUID.randomUUID(), rank.getUniqueId(), ConsoleUtil.CONSOLE_UUID, System.currentTimeMillis(), Integer.MAX_VALUE, "Default Grant"));
+            return;
+        }
+        name = document.getString("name");
+        if (document.getString("grants") != null){
+            grants = GrantDeserializer.convert(document.getString("grants"));
+        }
+        if (document.getString("punishments") != null){
+            punishments = PunishmentDeserializer.convert(document.getString("punishments"));
+        }
+        if (document.getString("permissions") != null){
+            String[] splitPermissions = document.getString("permissions").split(":");
+            permissions.addAll(Arrays.asList(splitPermissions));
+        }
+    }
+
+    public void save(){
+        Document document = new Document();
+        document.append("uniqueId", uniqueId.toString());
+        document.append("name", name);
+        if (!grants.isEmpty()){
+            document.append("grants", GrantSerializer.convert(grants));
+        }
+        if (!punishments.isEmpty()){
+            document.append("punishments", PunishmentSerializer.convert(punishments));
+        }
+        if (!permissions.isEmpty()){
+            document.append("permissions", convert(permissions));
+        }
+        Bson filter = Filters.eq("uniqueId", uniqueId.toString());
+        Core.getInstance().getProfileHandler().getCollection().replaceOne(filter, document, new ReplaceOptions().upsert(true));
+    }
+
+    private String convert(List<String> permissions){
+        StringBuilder builder = new StringBuilder();
+        for (String permission : permissions){
+            builder.append(permission).append(":");
+        }
+        return builder.toString();
+    }
+
+}

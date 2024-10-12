@@ -1,0 +1,11 @@
+database:
+  mongo:
+    uri: "mongodb://localhost:27017"
+    database: "Core"
+  redis:
+    host: "localhost"
+    port: 6379
+    channel: "Core"
+    authentication:
+      enabled: false
+      password: "Hieu"
