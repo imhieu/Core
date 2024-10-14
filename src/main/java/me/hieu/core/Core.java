@@ -4,12 +4,15 @@ import lombok.Getter;
 import me.hieu.core.color.ChatColorHandler;
 import me.hieu.core.color.ChatColorProvider;
 import me.hieu.core.command.AlertCommand;
+import me.hieu.core.command.StaffChatCommand;
 import me.hieu.core.grant.command.ClearGrantsCommand;
 import me.hieu.core.grant.command.GrantCommand;
 import me.hieu.core.grant.command.GrantsCommand;
 import me.hieu.core.handler.ConfigHandler;
 import me.hieu.core.listener.ChatListener;
 import me.hieu.core.mongo.MongoHandler;
+import me.hieu.core.procedure.ProcedureHandler;
+import me.hieu.core.procedure.ProcedureListener;
 import me.hieu.core.profile.Profile;
 import me.hieu.core.profile.ProfileHandler;
 import me.hieu.core.profile.ProfileListener;
@@ -26,6 +29,11 @@ import me.hieu.core.rank.RankProvider;
 import me.hieu.core.rank.command.RankCommand;
 import me.hieu.core.rank.command.RanksCommand;
 import me.hieu.core.redis.RedisHandler;
+import me.hieu.core.tag.Tag;
+import me.hieu.core.tag.TagHandler;
+import me.hieu.core.tag.TagProvider;
+import me.hieu.core.tag.command.TagCommand;
+import me.hieu.core.tag.command.TagsCommand;
 import me.hieu.libraries.Libraries;
 import me.hieu.libraries.drink.CommandService;
 import org.bukkit.Bukkit;
@@ -43,7 +51,9 @@ public final class Core extends JavaPlugin {
     public RedisHandler redisHandler;
     public ChatColorHandler chatColorHandler;
     public RankHandler rankHandler;
+    public TagHandler tagHandler;
     public ProfileHandler profileHandler;
+    public ProcedureHandler procedureHandler;
 
     @Override
     public void onEnable() {
@@ -60,16 +70,22 @@ public final class Core extends JavaPlugin {
         chatColorHandler = new ChatColorHandler();
         rankHandler = new RankHandler();
         rankHandler.initRanks();
+        tagHandler = new TagHandler();
+        tagHandler.initTags();
         profileHandler = new ProfileHandler();
+        procedureHandler = new ProcedureHandler();
     }
 
     private void initCommands(){
         CommandService drink = Libraries.get(this);
         drink.bind(ChatColor.class).toProvider(new ChatColorProvider());
         drink.bind(Rank.class).toProvider(new RankProvider());
+        drink.bind(Tag.class).toProvider(new TagProvider());
         drink.bind(Profile.class).toProvider(new ProfileProvider());
         drink.register(new RankCommand(), "rank");
         drink.register(new RanksCommand(), "ranks");
+        drink.register(new TagCommand(), "tag");
+        drink.register(new TagsCommand(), "tags");
         drink.register(new GrantCommand(), "grant");
         drink.register(new GrantsCommand(), "grants");
         drink.register(new ClearGrantsCommand(), "cleargrants");
@@ -86,12 +102,14 @@ public final class Core extends JavaPlugin {
         drink.register(new UnbanCommand(), "unban");
         drink.register(new UnmuteCommand(), "unmute");
         drink.register(new ClearHistoryCommand(), "clearhistory");
+        drink.register(new StaffChatCommand(), "staffchat", "sc");
         drink.registerCommands();
     }
 
     private void initListeners(){
         Bukkit.getServer().getPluginManager().registerEvents(new ProfileListener(), this);
         Bukkit.getServer().getPluginManager().registerEvents(new ChatListener(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new ProcedureListener(), this);
     }
 
     @Override

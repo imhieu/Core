@@ -22,7 +22,7 @@ public class UnblacklistCommand {
 
     PunishmentType type = PunishmentType.BLACKLIST;
 
-    @Command(name = "", desc = "unblacklist player", usage = "<player>")
+    @Command(name = "", desc = "unblacklist player", usage = "<player> <reason> [-s]")
     @Require("*")
     public void command(@Sender CommandSender sender, Profile target, @Text String reason, @Flag('s') boolean silent){
         UUID pardonedBy;

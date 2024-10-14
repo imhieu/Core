@@ -11,11 +11,19 @@ import lombok.Getter;
 public enum Locale {
 
     CHAT_FORMAT ("chat-format"),
+
     RANK_CREATE ("packets.rank.create"),
     RANK_UPDATE ("packets.rank.update"),
     RANK_DELETE ("packets.rank.delete"),
+
+    TAG_CREATE ("packets.tag.create"),
+    TAG_UPDATE ("packets.tag.update"),
+    TAG_DELETE ("packets.tag.delete"),
+
     STAFF_JOIN ("packets.staff.join"),
     STAFF_LEAVE ("packets.staff.leave"),
+    STAFF_CHAT ("packets.staff.chat"),
+
     PUNISHMENT_BROADCAST("packets.punishment.broadcast"),
     PUNISHMENT_SILENT_BROADCAST("packets.punishment.silent-broadcast");
 

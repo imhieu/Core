@@ -3,7 +3,6 @@ package me.hieu.core.profile;
 import me.hieu.core.Core;
 import me.hieu.core.Locale;
 import me.hieu.core.packet.BroadcastPacket;
-import me.hieu.core.punishment.Punishment;
 import me.hieu.core.punishment.PunishmentType;
 import me.hieu.libraries.util.CC;
 import org.bukkit.Bukkit;

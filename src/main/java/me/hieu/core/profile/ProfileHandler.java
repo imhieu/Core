@@ -21,7 +21,6 @@ import java.util.UUID;
 public class ProfileHandler {
 
     private MongoCollection<Document> collection;
-
     private List<Profile> profiles;
 
     public ProfileHandler(){

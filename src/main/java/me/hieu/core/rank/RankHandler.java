@@ -20,7 +20,6 @@ import java.util.UUID;
 public class RankHandler {
 
     private MongoCollection<Document> collection;
-
     private List<Rank> ranks;
 
     public RankHandler(){

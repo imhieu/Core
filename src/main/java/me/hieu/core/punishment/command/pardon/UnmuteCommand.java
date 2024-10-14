@@ -34,7 +34,7 @@ public class UnmuteCommand {
         }
         Punishment permMutePunishment = target.getActivePunishment(permMuteType);
         Punishment tempMutePunishment = target.getActivePunishment(tempMuteType);
-        if (permMutePunishment == null || tempMutePunishment == null){
+        if (permMutePunishment == null && tempMutePunishment == null){
             sender.sendMessage(CC.translate(target.getFormattedName() + " &cisn't muted."));
         }
         if (permMutePunishment != null){

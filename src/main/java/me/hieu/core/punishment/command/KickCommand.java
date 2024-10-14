@@ -1,13 +1,10 @@
 package me.hieu.core.punishment.command;
 
 import me.hieu.core.Core;
-import me.hieu.core.profile.Profile;
 import me.hieu.core.punishment.PunishmentType;
 import me.hieu.core.punishment.packet.PunishmentAddPacket;
 import me.hieu.core.util.ConsoleUtil;
 import me.hieu.libraries.drink.annotation.*;
-import me.hieu.libraries.util.CC;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 

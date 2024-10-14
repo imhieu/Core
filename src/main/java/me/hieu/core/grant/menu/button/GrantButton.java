@@ -1,8 +1,9 @@
 package me.hieu.core.grant.menu.button;
 
-import lombok.Getter;
 import me.hieu.core.Core;
 import me.hieu.core.grant.Grant;
+import me.hieu.core.procedure.Procedure;
+import me.hieu.core.procedure.ProcedureType;
 import me.hieu.core.profile.Profile;
 import me.hieu.core.profile.ProfileHandler;
 import me.hieu.core.rank.Rank;
@@ -12,8 +13,10 @@ import me.hieu.core.util.DateUtil;
 import me.hieu.libraries.menu.Button;
 import me.hieu.libraries.util.CC;
 import me.hieu.libraries.util.ItemBuilder;
+import me.hieu.libraries.util.TaskUtil;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -24,7 +27,6 @@ import java.util.List;
  * Date: 07/10/2024
  */
 
-@Getter
 public class GrantButton extends Button {
 
     private final Profile target;
@@ -59,7 +61,7 @@ public class GrantButton extends Button {
         if (!grant.isExpired() && !grant.isPardoned()){
             Rank defaultRank = rankHandler.getRankByName("Default");
             if (grant.getGrantRank().getName().equalsIgnoreCase(defaultRank.getName())){
-                lore.add("&cYou can't pardon this grant!");
+                lore.add("&cCan't this pardon!");
             } else {
                 lore.add("&aClick to pardon this grant!");
             }
@@ -78,6 +80,25 @@ public class GrantButton extends Button {
         lore.add(CC.MENU_BAR);
         String name = "&6" + DateUtil.format(grant.getAddedOn());
         return new ItemBuilder(item).name(name).lore(lore).build();
+    }
+
+    @Override
+    public void clicked(Player player, ClickType clickType) {
+        Core plugin = Core.getInstance();
+        RankHandler rankHandler = plugin.getRankHandler();
+        if (!grant.isExpired() && !grant.isPardoned()){
+            Rank defaultRank = rankHandler.getRankByName("Default");
+            if (grant.getGrantRank().getName().equalsIgnoreCase(defaultRank.getName())){
+                playFail(player);
+            } else {
+                TaskUtil.runTask(player::closeInventory);
+                plugin.getProcedureHandler().addProcedure(player.getUniqueId(), new Procedure(target.getUniqueId(), grant.getUniqueId(), ProcedureType.GRANT_PARDON, grant));
+                player.sendMessage(CC.translate("&eEnter a reason for pardoning this grant: &7(Type '&ccancel&7' to cancel)"));
+                playNeutral(player);
+            }
+            return;
+        }
+        playFail(player);
     }
 
 }

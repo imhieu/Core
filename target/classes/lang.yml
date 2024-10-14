@@ -1,5 +1,3 @@
-no-permission: "&cI'm sorry, but you do not have permission to perform this command. Please contact server administrators if you believe that this is in error."
-
 chat-format: "{profile}&f: {message}"
 
 packets:
@@ -7,6 +5,10 @@ packets:
     create: "&9Network Update &7-> &eRank Created &7-> {rank}"
     update: "&9Network Update &7-> &eRank Updated &7-> {rank}"
     delete: "&9Network Update &7-> &eRank Deleted &7-> {rank}"
+  tag:
+    create: "&9Network Update &7-> &eTag Created &7-> {tag}"
+    update: "&9Network Update &7-> &eTag Updated &7-> {tag}"
+    delete: "&9Network Update &7-> &eTag Deleted &7-> {tag}"
   punishment:
     broadcast: "&7[Silent] {target} &awas {context} &aby {executor}&a."
     silent-broadcast: "{target} &awas {context} &aby {executor}&a."

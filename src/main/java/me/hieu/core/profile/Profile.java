@@ -8,11 +8,13 @@ import me.hieu.core.Core;
 import me.hieu.core.grant.Grant;
 import me.hieu.core.grant.GrantDeserializer;
 import me.hieu.core.grant.GrantSerializer;
+import me.hieu.core.profile.option.ProfileStaffOption;
 import me.hieu.core.punishment.Punishment;
 import me.hieu.core.punishment.PunishmentDeserializer;
 import me.hieu.core.punishment.PunishmentSerializer;
 import me.hieu.core.punishment.PunishmentType;
 import me.hieu.core.rank.Rank;
+import me.hieu.core.tag.Tag;
 import me.hieu.core.util.ConsoleUtil;
 import org.bson.Document;
 import org.bson.conversions.Bson;
@@ -32,43 +34,46 @@ public class Profile {
 
     private UUID uniqueId;
     private String name;
+    private Tag tag;
     private List<Grant> grants;
     private List<Punishment> punishments;
     private List<String> permissions;
 
+    private ProfileStaffOption staffOption;
+
     public Profile(UUID uuid){
         this.uniqueId = uuid;
         name = Bukkit.getOfflinePlayer(uuid).getName();
+        tag = null;
         grants = new ArrayList<>();
         punishments = new ArrayList<>();
         permissions = new ArrayList<>();
+        staffOption = new ProfileStaffOption();
         load();
     }
 
     public Profile(String name){
         uniqueId = Bukkit.getOfflinePlayer(name).getUniqueId();
         this.name = name;
+        tag = null;
         grants = new ArrayList<>();
         punishments = new ArrayList<>();
         permissions = new ArrayList<>();
+        staffOption = new ProfileStaffOption();
         load();
     }
 
     public void calibratePermissions(){
-        List<String> totalPermissions = new ArrayList<>();
+        List<String> permissions = new ArrayList<>(this.permissions);
         Player player = Bukkit.getPlayer(uniqueId);
         if (player == null) return;
         PermissionAttachment attachment = player.addAttachment(Core.getInstance());
         Rank rank = getActiveRank();
-        for (UUID inheritance : rank.getInheritances()){
-            Rank inheritanceRank = Core.getInstance().getRankHandler().getRankByUniqueId(inheritance);
-            totalPermissions.addAll(inheritanceRank.getPermissions());
-        }
-        totalPermissions.addAll(rank.getPermissions());
-        totalPermissions.addAll(permissions);
-        for (String permission : totalPermissions){
+        permissions.addAll(rank.getAllPermissions());
+        for (String permission : permissions){
             attachment.setPermission(permission, true);
         }
+        player.recalculatePermissions();
     }
 
     public String getFormattedName(){
@@ -76,7 +81,7 @@ public class Profile {
     }
 
     public String getChatFormattedName(){
-        return getActiveRank().getPrefix() + name + getActiveRank().getSuffix();
+        return getActiveRank().getPrefix() + name + getActiveRank().getSuffix() + (tag == null ? "" : tag.getDisplay());
     }
 
     public Rank getActiveRank(){
@@ -103,6 +108,9 @@ public class Profile {
             return;
         }
         name = document.getString("name");
+        if (document.getString("tagUniqueId") != null){
+            tag = Core.getInstance().getTagHandler().getTagByUniqueId(UUID.fromString(document.getString("tagUniqueId")));
+        }
         if (document.getString("grants") != null){
             grants = GrantDeserializer.convert(document.getString("grants"));
         }
@@ -119,6 +127,9 @@ public class Profile {
         Document document = new Document();
         document.append("uniqueId", uniqueId.toString());
         document.append("name", name);
+        if (tag != null){
+            document.append("tagUniqueId", tag.getUniqueId().toString());
+        }
         if (!grants.isEmpty()){
             document.append("grants", GrantSerializer.convert(grants));
         }

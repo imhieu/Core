@@ -1,6 +1,5 @@
 package me.hieu.core.punishment.packet;
 
-import lombok.Getter;
 import me.hieu.core.Core;
 import me.hieu.core.Locale;
 import me.hieu.core.packet.BroadcastPacket;
@@ -21,7 +20,6 @@ import java.util.UUID;
  * Date: 11/10/2024
  */
 
-@Getter
 public class PunishmentAddPacket extends Packet {
 
     private UUID target;

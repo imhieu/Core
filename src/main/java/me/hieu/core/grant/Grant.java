@@ -53,7 +53,7 @@ public class Grant implements Comparable<Grant> {
 
     @Override
     public int compareTo(@NotNull Grant o) {
-        return o.getGrantRank().getWeight() - getGrantRank().getWeight();
+        return (int) (o.getAddedOn() - addedOn);
     }
 
     public long getExpireDate(){

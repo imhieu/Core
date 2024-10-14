@@ -43,6 +43,9 @@ public class TempMuteCommand {
         if (duration == -1){
             sender.sendMessage(CC.translate("&cNo duration found with the time '" + time + "'."));
             return;
+        } else if (duration == Integer.MAX_VALUE){
+            sender.sendMessage(CC.translate("&cDuration exceeds the temporarily duration with time '" + time + "'."));
+            return;
         }
         PunishmentAddPacket packet = new PunishmentAddPacket(target.getUniqueId(), !silent, type, UUID.randomUUID(), addedBy, System.currentTimeMillis(), duration, reason);
         Core.getInstance().getRedisHandler().sendPacket(packet);

@@ -59,6 +59,15 @@ public class Rank implements Comparable<Rank> {
         return o.getWeight() - weight;
     }
 
+    public List<String> getAllPermissions(){
+        List<String> permissions = new ArrayList<>(this.permissions);
+        for (UUID rankUniqueId : inheritances){
+            Rank rank = Core.getInstance().rankHandler.getRankByUniqueId(rankUniqueId);
+            permissions.addAll(rank.getAllPermissions());
+        }
+        return permissions;
+    }
+
     public String getFormattedRank(){
         return color + name;
     }

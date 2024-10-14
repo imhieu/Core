@@ -22,7 +22,7 @@ public class RankCommand {
     public void create(@Sender CommandSender sender, String name){
         Rank rank = Core.getInstance().getRankHandler().getRankByName(name);
         if (rank != null){
-            sender.sendMessage(CC.translate("&cThere is already a rank with the name '" + name + "'."));
+            sender.sendMessage(CC.translate("&cThere's already a rank with the name '" + name + "'."));
             return;
         }
         RankCreatePacket packet = new RankCreatePacket(name.replaceAll("_", " "));
