@@ -53,7 +53,7 @@ public class TagButton extends Button {
             } else if (profile.getTag().getUniqueId() == tag.getUniqueId()){
                 profile.setTag(null);
             }
-            playFail(player);
+            playNeutral(player);
             profile.save();
             return;
         }
