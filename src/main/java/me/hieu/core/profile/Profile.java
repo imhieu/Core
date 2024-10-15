@@ -20,6 +20,7 @@ import org.bson.conversions.Bson;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -29,7 +30,7 @@ import java.util.*;
  */
 
 @Getter @Setter
-public class Profile {
+public class Profile implements Comparable<Profile> {
 
     private UUID uniqueId;
     private String name;
@@ -60,6 +61,11 @@ public class Profile {
         permissions = new ArrayList<>();
         staffOption = new ProfileStaffOption();
         load();
+    }
+
+    @Override
+    public int compareTo(@NotNull Profile o) {
+        return o.getActiveRank().getWeight() - getActiveRank().getWeight();
     }
 
     public void calibratePermissions(){

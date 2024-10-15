@@ -4,6 +4,7 @@ import lombok.Getter;
 import me.hieu.core.color.ChatColorHandler;
 import me.hieu.core.color.ChatColorProvider;
 import me.hieu.core.command.AlertCommand;
+import me.hieu.core.command.ListCommand;
 import me.hieu.core.command.StaffChatCommand;
 import me.hieu.core.grant.command.ClearGrantsCommand;
 import me.hieu.core.grant.command.GrantCommand;
@@ -82,6 +83,7 @@ public final class Core extends JavaPlugin {
         drink.bind(Rank.class).toProvider(new RankProvider());
         drink.bind(Tag.class).toProvider(new TagProvider());
         drink.bind(Profile.class).toProvider(new ProfileProvider());
+        drink.register(new ListCommand(), "list");
         drink.register(new RankCommand(), "rank");
         drink.register(new RanksCommand(), "ranks");
         drink.register(new TagCommand(), "tag");

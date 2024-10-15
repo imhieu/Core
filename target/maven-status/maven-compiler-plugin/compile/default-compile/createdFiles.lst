@@ -35,6 +35,7 @@ me\hieu\core\profile\Profile.class
 me\hieu\core\punishment\history\HistoryCommand.class
 me\hieu\core\punishment\PunishmentType.class
 me\hieu\core\grant\GrantDeserializer.class
+me\hieu\core\command\ListCommand.class
 me\hieu\core\punishment\history\packet\HistoryClearPacket.class
 me\hieu\core\rank\packet\RankUpdateColorPacket.class
 me\hieu\core\rank\packet\RankUpdateInheritancePacket.class
