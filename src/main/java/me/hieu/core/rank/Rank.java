@@ -1,5 +1,6 @@
 package me.hieu.core.rank;
 
+import com.google.gson.Gson;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ReplaceOptions;
 import lombok.Getter;
@@ -80,19 +81,12 @@ public class Rank implements Comparable<Rank> {
         document.append("weight", weight);
         document.append("prefix", prefix);
         document.append("suffix", suffix);
+        Gson gson = new Gson();
         if (!permissions.isEmpty()){
-            StringBuilder builder = new StringBuilder();
-            for (String permission : permissions){
-                builder.append(permission).append(":");
-            }
-            document.append("permission", builder.toString());
+            document.append("permission", gson.toJson(permissions));
         }
         if (!inheritances.isEmpty()){
-            StringBuilder builder = new StringBuilder();
-            for (UUID uuid : inheritances){
-                builder.append(uuid.toString()).append(":");
-            }
-            document.append("inheritances", builder.toString());
+            document.append("inheritances", gson.toJson(inheritances));
         }
         Bson filter = Filters.eq("uniqueId", uniqueId.toString());
         Core.getInstance().getRankHandler().getCollection().replaceOne(filter, document, new ReplaceOptions().upsert(true));

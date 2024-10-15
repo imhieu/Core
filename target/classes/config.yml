@@ -3,9 +3,5 @@ database:
     uri: "mongodb://localhost:27017"
     database: "Core"
   redis:
-    host: "localhost"
-    port: 6379
+    uri: "redis://localhost:6379/0"
     channel: "Core"
-    authentication:
-      enabled: false
-      password: "Hieu"

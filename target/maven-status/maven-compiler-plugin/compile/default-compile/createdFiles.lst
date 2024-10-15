@@ -6,6 +6,7 @@ me\hieu\core\rank\RankProvider.class
 me\hieu\core\punishment\command\MuteCommand.class
 me\hieu\core\color\ChatColorHandler.class
 me\hieu\core\util\ConsoleUtil.class
+me\hieu\core\grant\GrantDeserializer$1.class
 me\hieu\core\rank\command\RanksCommand.class
 me\hieu\core\tag\command\TagCommand.class
 me\hieu\core\redis\RedisHandler.class
@@ -17,12 +18,11 @@ me\hieu\core\punishment\history\menu\HistoryMenu.class
 me\hieu\core\Locale.class
 me\hieu\core\procedure\ProcedureType.class
 me\hieu\core\grant\Grant.class
-me\hieu\core\grant\GrantSerializer.class
 me\hieu\core\punishment\packet\PunishmentAddPacket.class
+me\hieu\core\rank\RankHandler$2.class
 me\hieu\core\grant\command\ClearGrantsCommand.class
 me\hieu\core\punishment\packet\PunishmentAddPacket$1.class
 me\hieu\core\tag\TagProvider.class
-me\hieu\core\punishment\PunishmentSerializer.class
 me\hieu\core\grant\command\GrantCommand.class
 me\hieu\core\packet\BroadcastPacket.class
 me\hieu\core\tag\packet\TagUpdateColorPacket.class
@@ -45,6 +45,7 @@ me\hieu\core\rank\packet\RankUpdateSuffixPacket.class
 me\hieu\core\tag\packet\TagCreatePacket.class
 me\hieu\core\grant\menu\button\GrantButton.class
 me\hieu\core\redis\packet\Packet.class
+me\hieu\core\rank\RankHandler$1.class
 me\hieu\core\profile\option\ProfileStaffOption.class
 me\hieu\core\profile\ProfileHandler.class
 me\hieu\core\grant\packet\GrantsClearPacket.class
@@ -60,6 +61,7 @@ me\hieu\core\punishment\PunishmentDeserializer.class
 me\hieu\core\rank\packet\RankUpdatePermissions.class
 me\hieu\core\listener\ChatListener.class
 me\hieu\core\punishment\history\ClearHistoryCommand.class
+me\hieu\core\punishment\PunishmentDeserializer$1.class
 me\hieu\core\rank\command\RankCommand.class
 me\hieu\core\rank\packet\RankDeletePacket.class
 me\hieu\core\rank\packet\RankUpdatePrefixPacket.class

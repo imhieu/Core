@@ -8,29 +8,24 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPubSub;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.function.Consumer;
 
 public class RedisHandler {
 
-    private String host;
-    private String password;
-    private int port;
+    private String uri;
 
     private JedisPool jedisPool;
 
     private String channel;
 
-    private boolean authentication;
-
     private Gson gson;
 
     public RedisHandler() {
         FileConfiguration config = Core.getInstance().getConfigHandler().getDefaultConfigz();
-        this.host = config.getString("database.redis.host");
-        this.port = config.getInt("database.redis.port");
+        this.uri = config.getString("database.redis.uri");
         this.channel = config.getString("database.redis.channel");
-        this.authentication = config.getBoolean("database.redis.authentication.enabled");
-        this.password = config.getString("database.redis.authentication.password");
         this.gson = new Gson();
         connect();
     }
@@ -41,10 +36,7 @@ public class RedisHandler {
      * starts a thread for receiving messages
      */
     public void connect() {
-        this.jedisPool = new JedisPool(host, port);
-        if (authentication){
-            this.jedisPool.getResource().auth(password);
-        }
+        this.jedisPool = new JedisPool(uri);
         new Thread(() -> {
             try (Jedis jedis = jedisPool.getResource()) {
                 jedis.subscribe(new JedisPubSub() {
@@ -77,9 +69,6 @@ public class RedisHandler {
         packet.onSend();
         new Thread(() ->
                 runCommand(redis -> {
-                    if (authentication){
-                        redis.auth(password);
-                    }
                     redis.publish(channel, packet.getClass().getName() + "//" + gson.toJson(packet));
         })).start();
     }

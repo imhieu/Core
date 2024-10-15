@@ -1,5 +1,6 @@
 package me.hieu.core.profile;
 
+import com.google.gson.Gson;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ReplaceOptions;
 import lombok.Getter;
@@ -7,11 +8,9 @@ import lombok.Setter;
 import me.hieu.core.Core;
 import me.hieu.core.grant.Grant;
 import me.hieu.core.grant.GrantDeserializer;
-import me.hieu.core.grant.GrantSerializer;
 import me.hieu.core.profile.option.ProfileStaffOption;
 import me.hieu.core.punishment.Punishment;
 import me.hieu.core.punishment.PunishmentDeserializer;
-import me.hieu.core.punishment.PunishmentSerializer;
 import me.hieu.core.punishment.PunishmentType;
 import me.hieu.core.rank.Rank;
 import me.hieu.core.tag.Tag;
@@ -130,11 +129,12 @@ public class Profile {
         if (tag != null){
             document.append("tagUniqueId", tag.getUniqueId().toString());
         }
+        Gson gson = new Gson();
         if (!grants.isEmpty()){
-            document.append("grants", GrantSerializer.convert(grants));
+            document.append("grants", gson.toJson(grants));
         }
         if (!punishments.isEmpty()){
-            document.append("punishments", PunishmentSerializer.convert(punishments));
+            document.append("punishments", gson.toJson(punishments));
         }
         if (!permissions.isEmpty()){
             document.append("permissions", convert(permissions));

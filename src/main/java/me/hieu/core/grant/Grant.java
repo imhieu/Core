@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import me.hieu.core.Core;
 import me.hieu.core.rank.Rank;
+import me.hieu.core.util.ConsoleUtil;
 import me.hieu.core.util.TimeUtil;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,6 +37,9 @@ public class Grant implements Comparable<Grant> {
         this.duration = duration;
         this.addedReason = addedReason;
         pardoned = false;
+        pardonedBy = ConsoleUtil.CONSOLE_UUID;
+        pardonedOn = System.currentTimeMillis();
+        pardonedReason = "";
     }
 
     public Grant(UUID uniqueId, UUID rankUniqueId, UUID addedBy, long addedOn, long duration, String addedReason, boolean pardoned, UUID pardonedBy, long pardonedOn, String pardonedReason){

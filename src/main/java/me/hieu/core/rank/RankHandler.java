@@ -1,11 +1,14 @@
 package me.hieu.core.rank;
 
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.mongodb.client.MongoCollection;
 import lombok.Getter;
 import me.hieu.core.Core;
 import org.bson.Document;
 import org.bukkit.ChatColor;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -36,16 +39,16 @@ public class RankHandler {
             String prefix = document.getString("prefix");
             String suffix = document.getString("suffix");
             List<String> permissions = new ArrayList<>();
+            Gson gson = new Gson();
+            Type type;
             if (document.getString("permissions") != null){
-                String[] splitPermissions = document.getString("permissions").split(":");
-                permissions.addAll(Arrays.asList(splitPermissions));
+                type = new TypeToken<List<String>>(){}.getType();
+                permissions = gson.fromJson(document.getString("permissions"), type);
             }
             List<UUID> inheritances = new ArrayList<>();
             if (document.getString("inheritances") != null){
-                String[] splitInheritances = document.getString("inheritances").split(":");
-                for (String inheritance : splitInheritances){
-                    inheritances.add(UUID.fromString(inheritance));
-                }
+                type = new TypeToken<List<UUID>>(){}.getType();
+                inheritances = gson.fromJson(document.getString("inheritances"), type);
             }
             new Rank(uniqueId, name, color, weight, prefix, suffix, permissions, inheritances);
         }
