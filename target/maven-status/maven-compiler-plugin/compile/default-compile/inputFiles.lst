@@ -55,6 +55,7 @@ C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\rank\packet\RankUpdateSuf
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\util\ConsoleUtil.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\grant\menu\GrantsMenu.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\tag\packet\TagCreatePacket.java
+C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\command\DisguiseCommand.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\procedure\ProcedureListener.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\tag\command\TagsCommand.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\grant\packet\GrantAddPacket.java
@@ -65,6 +66,7 @@ C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\punishment\command\pardon
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\listener\ChatListener.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\grant\command\ClearGrantsCommand.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\rank\packet\RankCreatePacket.java
+C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\profile\DisguiseProfile.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\punishment\command\TempBanCommand.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\punishment\packet\PunishmentPardonPacket.java
 C:\Hieu's Stuff\1.21.1\Core\src\main\java\me\hieu\core\rank\packet\RankUpdatePermissions.java

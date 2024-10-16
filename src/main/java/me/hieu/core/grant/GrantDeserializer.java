@@ -2,12 +2,9 @@ package me.hieu.core.grant;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import me.hieu.core.Core;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * Author: Le Thanh Hieu

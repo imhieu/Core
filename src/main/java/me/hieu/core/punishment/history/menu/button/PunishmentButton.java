@@ -6,8 +6,6 @@ import me.hieu.core.procedure.ProcedureType;
 import me.hieu.core.profile.Profile;
 import me.hieu.core.profile.ProfileHandler;
 import me.hieu.core.punishment.Punishment;
-import me.hieu.core.rank.Rank;
-import me.hieu.core.rank.RankHandler;
 import me.hieu.core.util.ConsoleUtil;
 import me.hieu.core.util.DateUtil;
 import me.hieu.libraries.menu.Button;

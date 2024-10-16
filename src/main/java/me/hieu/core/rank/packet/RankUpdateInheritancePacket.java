@@ -43,7 +43,7 @@ public class RankUpdateInheritancePacket extends Packet {
         Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", parentRank.getFormattedRank())), "*");
         for (Player player : Bukkit.getOnlinePlayers()){
             Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
-            if (profile.getActiveRank().getUniqueId().equals(parentRankUniqueId)){
+            if (profile.getActiveGrant().getRank().getUniqueId().equals(parentRankUniqueId)){
                 profile.calibratePermissions();
             }
         }

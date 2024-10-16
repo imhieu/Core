@@ -32,7 +32,7 @@ public class GrantCommand {
         } else {
             addedBy = ConsoleUtil.CONSOLE_UUID;
         }
-        if (target.getActiveRank().getUniqueId().equals(rank.getUniqueId())){
+        if (target.getActiveGrant().getRank().getUniqueId().equals(rank.getUniqueId())){
             sender.sendMessage(CC.translate(target.getFormattedName() + " &calready has an active &r" + rank.getFormattedRank() + " &crank."));
             return;
         }

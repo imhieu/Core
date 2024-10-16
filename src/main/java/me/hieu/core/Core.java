@@ -18,6 +18,7 @@ import me.hieu.core.profile.Profile;
 import me.hieu.core.profile.ProfileHandler;
 import me.hieu.core.profile.ProfileListener;
 import me.hieu.core.profile.ProfileProvider;
+import me.hieu.core.profile.disguise.command.DisguiseCommand;
 import me.hieu.core.punishment.command.*;
 import me.hieu.core.punishment.command.pardon.UnbanCommand;
 import me.hieu.core.punishment.command.pardon.UnblacklistCommand;
@@ -105,6 +106,9 @@ public final class Core extends JavaPlugin {
         drink.register(new UnmuteCommand(), "unmute");
         drink.register(new ClearHistoryCommand(), "clearhistory");
         drink.register(new StaffChatCommand(), "staffchat", "sc");
+
+        drink.register(new DisguiseCommand(), "disguise");
+
         drink.registerCommands();
     }
 

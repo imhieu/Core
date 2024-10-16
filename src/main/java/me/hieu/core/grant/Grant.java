@@ -78,7 +78,7 @@ public class Grant implements Comparable<Grant> {
         return TimeUtil.convertLong(duration);
     }
 
-    public Rank getGrantRank(){
+    public Rank getRank(){
         return Core.getInstance().getRankHandler().getRankByUniqueId(rankUniqueId);
     }
 

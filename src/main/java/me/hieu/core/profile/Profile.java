@@ -8,6 +8,7 @@ import lombok.Setter;
 import me.hieu.core.Core;
 import me.hieu.core.grant.Grant;
 import me.hieu.core.grant.GrantDeserializer;
+import me.hieu.core.profile.disguise.DisguiseProfile;
 import me.hieu.core.profile.option.ProfileStaffOption;
 import me.hieu.core.punishment.Punishment;
 import me.hieu.core.punishment.PunishmentDeserializer;
@@ -39,6 +40,7 @@ public class Profile implements Comparable<Profile> {
     private List<Punishment> punishments;
     private List<String> permissions;
 
+    private DisguiseProfile disguiseProfile;
     private ProfileStaffOption staffOption;
 
     public Profile(UUID uuid){
@@ -48,6 +50,7 @@ public class Profile implements Comparable<Profile> {
         grants = new ArrayList<>();
         punishments = new ArrayList<>();
         permissions = new ArrayList<>();
+        disguiseProfile = null;
         staffOption = new ProfileStaffOption();
         load();
     }
@@ -59,13 +62,14 @@ public class Profile implements Comparable<Profile> {
         grants = new ArrayList<>();
         punishments = new ArrayList<>();
         permissions = new ArrayList<>();
+        disguiseProfile = null;
         staffOption = new ProfileStaffOption();
         load();
     }
 
     @Override
     public int compareTo(@NotNull Profile o) {
-        return o.getActiveRank().getWeight() - getActiveRank().getWeight();
+        return o.getActiveGrant().getRank().getWeight() - getActiveGrant().getRank().getWeight();
     }
 
     public void calibratePermissions(){
@@ -73,7 +77,7 @@ public class Profile implements Comparable<Profile> {
         Player player = Bukkit.getPlayer(uniqueId);
         if (player == null) return;
         PermissionAttachment attachment = player.addAttachment(Core.getInstance());
-        Rank rank = getActiveRank();
+        Rank rank = getActiveGrant().getRank();
         permissions.addAll(rank.getAllPermissions());
         for (String permission : permissions){
             attachment.setPermission(permission, true);
@@ -81,18 +85,22 @@ public class Profile implements Comparable<Profile> {
         player.recalculatePermissions();
     }
 
+    public boolean isDisguised(){
+        return disguiseProfile != null;
+    }
+
     public String getFormattedName(){
-        return getActiveRank().getColor() + name;
+        return isDisguised() ? disguiseProfile.getRank().getColor() + disguiseProfile.getName() : getActiveGrant().getRank().getColor() + name;
     }
 
     public String getChatFormattedName(){
-        return getActiveRank().getPrefix() + name + getActiveRank().getSuffix() + (tag == null ? "" : tag.getDisplay());
+        return(isDisguised() ? disguiseProfile.getRank().getPrefix() + disguiseProfile.getName() + disguiseProfile.getRank().getSuffix() : getActiveGrant().getRank().getPrefix() + name + getActiveGrant().getRank().getSuffix()) + name + (tag == null ? "" : tag.getDisplay());
     }
 
-    public Rank getActiveRank(){
+    public Grant getActiveGrant(){
         Collections.sort(grants);
         for (Grant grant : grants){
-            if (!grant.isExpired() && !grant.isPardoned()) return grant.getGrantRank();
+            if (!grant.isExpired() && !grant.isPardoned()) return grant;
         }
         return null;
     }
@@ -116,6 +124,9 @@ public class Profile implements Comparable<Profile> {
         if (document.getString("tagUniqueId") != null){
             tag = Core.getInstance().getTagHandler().getTagByUniqueId(UUID.fromString(document.getString("tagUniqueId")));
         }
+        if (document.getString("disguiseProfile") != null){
+            disguiseProfile = new Gson().fromJson(document.getString("disguiseProfile"), DisguiseProfile.class);
+        }
         if (document.getString("grants") != null){
             grants = GrantDeserializer.convert(document.getString("grants"));
         }
@@ -136,6 +147,9 @@ public class Profile implements Comparable<Profile> {
             document.append("tagUniqueId", tag.getUniqueId().toString());
         }
         Gson gson = new Gson();
+        if (disguiseProfile != null){
+            document.append("disguiseProfile", gson.toJson(disguiseProfile));
+        }
         if (!grants.isEmpty()){
             document.append("grants", gson.toJson(grants));
         }

@@ -1,5 +1,6 @@
 me\hieu\core\punishment\command\KickCommand.class
 me\hieu\core\procedure\ProcedureListener.class
+me\hieu\core\profile\DisguiseProfile.class
 me\hieu\core\punishment\command\BlacklistCommand.class
 me\hieu\core\tag\packet\TagUpdateDisplayPacket.class
 me\hieu\core\rank\RankProvider.class
@@ -74,6 +75,7 @@ me\hieu\core\punishment\packet\PunishmentPardonPacket.class
 me\hieu\core\punishment\Punishment.class
 me\hieu\core\rank\packet\RankCreatePacket.class
 me\hieu\core\tag\Tag.class
+me\hieu\core\command\DisguiseCommand.class
 me\hieu\core\punishment\command\pardon\UnblacklistCommand.class
 me\hieu\core\handler\ConfigHandler.class
 me\hieu\core\punishment\command\pardon\UnbanCommand.class

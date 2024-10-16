@@ -2,8 +2,6 @@ package me.hieu.core.procedure;
 
 import lombok.Getter;
 import lombok.Setter;
-import me.hieu.core.grant.Grant;
-import me.hieu.core.punishment.Punishment;
 
 import java.util.UUID;
 

@@ -35,7 +35,7 @@ public class ProfileListener implements Listener {
             message = PunishmentType.BLACKLIST.get();
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, CC.translate(message));
         }
-        if (profile.getActivePunishment(PunishmentType.TEMP_BAN) != null){
+        if (profile.getActivePunishment(PunishmentType.TEMP_BAN) != null) {
             message = PunishmentType.TEMP_BAN.get().replace("{duration}", profile.getActivePunishment(PunishmentType.TEMP_BAN).getExpiresIn());
             event.disallow(AsyncPlayerPreLoginEvent.Result.KICK_OTHER, CC.translate(message));
         }
