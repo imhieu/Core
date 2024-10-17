@@ -45,7 +45,7 @@ public class GrantButton extends Button {
         ItemStack item = null;
         List<String> lore = new ArrayList<>();
         lore.add(CC.MENU_BAR);
-        lore.add("&eAdded Rank: &r" + grant.getGrantRank().getFormattedRank());
+        lore.add("&eAdded Rank: &r" + grant.getRank().getFormattedRank());
         if (grant.getAddedBy().equals(ConsoleUtil.CONSOLE_UUID)){
             lore.add("&eAdded By: &4Console");
         } else {
@@ -60,7 +60,7 @@ public class GrantButton extends Button {
         lore.add(CC.MENU_BAR);
         if (!grant.isExpired() && !grant.isPardoned()){
             Rank defaultRank = rankHandler.getRankByName("Default");
-            if (grant.getGrantRank().getName().equalsIgnoreCase(defaultRank.getName())){
+            if (grant.getRank().getName().equalsIgnoreCase(defaultRank.getName())){
                 lore.add("&cCan't this pardon!");
             } else {
                 lore.add("&aClick to pardon this grant!");
@@ -88,7 +88,7 @@ public class GrantButton extends Button {
         RankHandler rankHandler = plugin.getRankHandler();
         if (!grant.isExpired() && !grant.isPardoned()){
             Rank defaultRank = rankHandler.getRankByName("Default");
-            if (grant.getGrantRank().getName().equalsIgnoreCase(defaultRank.getName())){
+            if (grant.getRank().getName().equalsIgnoreCase(defaultRank.getName())){
                 playFail(player);
             } else {
                 TaskUtil.runTask(player::closeInventory);

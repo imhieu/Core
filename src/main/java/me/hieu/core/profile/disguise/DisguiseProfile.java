@@ -2,7 +2,10 @@ package me.hieu.core.profile.disguise;
 
 import lombok.Getter;
 import lombok.Setter;
+import me.hieu.core.Core;
 import me.hieu.core.rank.Rank;
+
+import java.util.UUID;
 
 /**
  * Author: Le Thanh Hieu
@@ -13,13 +16,15 @@ import me.hieu.core.rank.Rank;
 public class DisguiseProfile {
 
     private String name;
-    private String skin;
-    private Rank rank;
+    private UUID rankUniqueId;
 
-    public DisguiseProfile(String name, String skin, Rank rank){
+    public DisguiseProfile(String name, UUID rankUniqueId){
         this.name = name;
-        this.skin = skin;
-        this.rank = rank;
+        this.rankUniqueId = rankUniqueId;
+    }
+
+    public Rank getRank(){
+        return Core.getInstance().getRankHandler().getRankByUniqueId(rankUniqueId);
     }
 
 }

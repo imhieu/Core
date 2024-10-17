@@ -29,7 +29,7 @@ public class GrantsClearPacket extends Packet {
     public void onReceived() {
         Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(target);
         for (Grant grant : profile.getGrants()){
-            if (grant.getGrantRank().getName().equalsIgnoreCase("Default")) continue;
+            if (grant.getRank().getName().equalsIgnoreCase("Default")) continue;
             profile.getGrants().remove(grant);
         }
         profile.save();

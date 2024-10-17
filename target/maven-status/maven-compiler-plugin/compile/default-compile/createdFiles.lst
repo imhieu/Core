@@ -1,6 +1,5 @@
 me\hieu\core\punishment\command\KickCommand.class
 me\hieu\core\procedure\ProcedureListener.class
-me\hieu\core\profile\DisguiseProfile.class
 me\hieu\core\punishment\command\BlacklistCommand.class
 me\hieu\core\tag\packet\TagUpdateDisplayPacket.class
 me\hieu\core\rank\RankProvider.class
@@ -19,8 +18,10 @@ me\hieu\core\punishment\history\menu\HistoryMenu.class
 me\hieu\core\Locale.class
 me\hieu\core\procedure\ProcedureType.class
 me\hieu\core\grant\Grant.class
+me\hieu\core\profile\disguise\menu\button\DisguisePlayerButton.class
 me\hieu\core\punishment\packet\PunishmentAddPacket.class
 me\hieu\core\rank\RankHandler$2.class
+me\hieu\core\profile\disguise\command\UndisguiseCommand.class
 me\hieu\core\grant\command\ClearGrantsCommand.class
 me\hieu\core\punishment\packet\PunishmentAddPacket$1.class
 me\hieu\core\tag\TagProvider.class
@@ -42,6 +43,7 @@ me\hieu\core\rank\packet\RankUpdateColorPacket.class
 me\hieu\core\rank\packet\RankUpdateInheritancePacket.class
 me\hieu\core\punishment\command\TempMuteCommand.class
 me\hieu\core\profile\ProfileProvider.class
+me\hieu\core\profile\disguise\menu\DisguiseRankMenu.class
 me\hieu\core\procedure\Procedure.class
 me\hieu\core\rank\packet\RankUpdateSuffixPacket.class
 me\hieu\core\tag\packet\TagCreatePacket.class
@@ -59,6 +61,7 @@ me\hieu\core\profile\ProfileListener.class
 me\hieu\core\tag\menu\button\TagButton.class
 me\hieu\core\procedure\ProcedureHandler.class
 me\hieu\core\util\DateUtil.class
+me\hieu\core\profile\disguise\command\DisguiseCommand.class
 me\hieu\core\punishment\PunishmentDeserializer.class
 me\hieu\core\rank\packet\RankUpdatePermissions.class
 me\hieu\core\listener\ChatListener.class
@@ -70,16 +73,18 @@ me\hieu\core\rank\packet\RankUpdatePrefixPacket.class
 me\hieu\core\Core.class
 me\hieu\core\rank\RankHandler.class
 me\hieu\core\mongo\MongoHandler.class
+me\hieu\core\profile\disguise\menu\DisguisePlayerMenu.class
 me\hieu\core\color\ChatColorProvider.class
 me\hieu\core\punishment\packet\PunishmentPardonPacket.class
 me\hieu\core\punishment\Punishment.class
 me\hieu\core\rank\packet\RankCreatePacket.class
 me\hieu\core\tag\Tag.class
-me\hieu\core\command\DisguiseCommand.class
+me\hieu\core\profile\disguise\DisguiseProfile.class
 me\hieu\core\punishment\command\pardon\UnblacklistCommand.class
 me\hieu\core\handler\ConfigHandler.class
 me\hieu\core\punishment\command\pardon\UnbanCommand.class
 me\hieu\core\command\StaffChatCommand.class
+me\hieu\core\profile\disguise\menu\button\DisguiseRankButton.class
 me\hieu\core\grant\menu\GrantsMenu.class
 me\hieu\core\grant\command\GrantsCommand.class
 me\hieu\core\tag\command\TagsCommand.class

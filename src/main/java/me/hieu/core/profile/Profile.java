@@ -22,6 +22,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 import org.jetbrains.annotations.NotNull;
+import xyz.haoshoku.nick.api.NickAPI;
 
 import java.util.*;
 
@@ -89,12 +90,30 @@ public class Profile implements Comparable<Profile> {
         return disguiseProfile != null;
     }
 
+    public void updateDisguise(){
+        Player player = Bukkit.getPlayer(uniqueId);
+        if (player == null) return;
+        if (isDisguised()){
+            NickAPI.setNick(player, disguiseProfile.getName());
+            NickAPI.setSkin(player, disguiseProfile.getName());
+            NickAPI.setUniqueId(player, disguiseProfile.getName());
+            NickAPI.setProfileName(player, disguiseProfile.getName());
+            NickAPI.refreshPlayer(player);
+            return;
+        }
+        NickAPI.resetNick(player);
+        NickAPI.resetSkin(player);
+        NickAPI.resetUniqueId(player);
+        NickAPI.resetProfileName(player);
+        NickAPI.refreshPlayer(player);
+    }
+
     public String getFormattedName(){
         return isDisguised() ? disguiseProfile.getRank().getColor() + disguiseProfile.getName() : getActiveGrant().getRank().getColor() + name;
     }
 
     public String getChatFormattedName(){
-        return(isDisguised() ? disguiseProfile.getRank().getPrefix() + disguiseProfile.getName() + disguiseProfile.getRank().getSuffix() : getActiveGrant().getRank().getPrefix() + name + getActiveGrant().getRank().getSuffix()) + name + (tag == null ? "" : tag.getDisplay());
+        return (isDisguised() ? disguiseProfile.getRank().getPrefix() + disguiseProfile.getName() + disguiseProfile.getRank().getSuffix() : getActiveGrant().getRank().getPrefix() + name + getActiveGrant().getRank().getSuffix()) + (tag == null ? "" : tag.getDisplay());
     }
 
     public Grant getActiveGrant(){

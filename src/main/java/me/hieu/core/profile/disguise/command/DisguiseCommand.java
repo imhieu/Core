@@ -1,5 +1,6 @@
 package me.hieu.core.profile.disguise.command;
 
+import me.hieu.core.profile.disguise.menu.DisguisePlayerMenu;
 import me.hieu.libraries.drink.annotation.Command;
 import me.hieu.libraries.drink.annotation.OptArg;
 import me.hieu.libraries.drink.annotation.Require;
@@ -15,14 +16,10 @@ import org.bukkit.entity.Player;
 
 public class DisguiseCommand {
 
-    @Command(name = "", desc = "disguise", usage = "[name]")
+    @Command(name = "", desc = "disguise")
     @Require("*")
-    public void command(@Sender Player player, @OptArg String name){
-        Player target = Bukkit.getPlayer(name);
-        if (target != null){
-            player.sendMessage(CC.translate(""));
-            return;
-        }
+    public void command(@Sender Player player){
+        new DisguisePlayerMenu().openMenu(player);
     }
 
 }
