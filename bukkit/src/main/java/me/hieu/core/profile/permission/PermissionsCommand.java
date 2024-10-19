@@ -27,7 +27,7 @@ public class PermissionsCommand {
             sender.sendMessage(CC.translate(target.getFormattedName() + " &chas no individual permissions."));
             return;
         }
-        sender.sendMessage(CC.translate(target.getFormattedName() + "&6's Permissions: &f" + StringUtils.join(permissions, ", ")));
+        sender.sendMessage(CC.translate(target.getFormattedName() + "'s &6Permissions: &f" + StringUtils.join(permissions, ", ")));
     }
 
 }
