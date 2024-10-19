@@ -1,5 +1,6 @@
 package me.hieu.core.profile;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ReplaceOptions;
@@ -24,6 +25,7 @@ import org.bukkit.permissions.PermissionAttachment;
 import org.jetbrains.annotations.NotNull;
 import xyz.haoshoku.nick.api.NickAPI;
 
+import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -154,8 +156,8 @@ public class Profile implements Comparable<Profile> {
             punishments = PunishmentDeserializer.convert(document.getString("punishments"));
         }
         if (document.getString("permissions") != null){
-            String[] splitPermissions = document.getString("permissions").split(":");
-            permissions.addAll(Arrays.asList(splitPermissions));
+            Type type = new TypeToken<List<String>>(){}.getType();
+            permissions = new Gson().fromJson(document.getString("permissions"), type);
         }
     }
 
@@ -177,18 +179,10 @@ public class Profile implements Comparable<Profile> {
             document.append("punishments", gson.toJson(punishments));
         }
         if (!permissions.isEmpty()){
-            document.append("permissions", convert(permissions));
+            document.append("permissions", gson.toJson(permissions));
         }
         Bson filter = Filters.eq("uniqueId", uniqueId.toString());
         Core.getInstance().getProfileHandler().getCollection().replaceOne(filter, document, new ReplaceOptions().upsert(true));
-    }
-
-    private String convert(List<String> permissions){
-        StringBuilder builder = new StringBuilder();
-        for (String permission : permissions){
-            builder.append(permission).append(":");
-        }
-        return builder.toString();
     }
 
 }

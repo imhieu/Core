@@ -47,7 +47,11 @@ public class ProfileProvider extends DrinkProvider<Profile> {
     public List<String> getSuggestions(@NotNull String prefix) {
         List<String> toReturn = new ArrayList<>();
         for (Profile profile : Core.getInstance().getProfileHandler().getProfiles()){
-            if (profile.getName().toLowerCase().startsWith(prefix.toLowerCase())) toReturn.add(profile.getName());
+            if (profile.isDisguised()){
+                if (profile.getDisguiseProfile().getName().toLowerCase().startsWith(prefix.toLowerCase())) toReturn.add(profile.getDisguiseProfile().getName());
+            } else {
+                if (profile.getName().toLowerCase().startsWith(prefix.toLowerCase())) toReturn.add(profile.getName());
+            }
         }
         return toReturn;
     }
