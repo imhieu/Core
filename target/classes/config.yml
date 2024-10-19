@@ -1,7 +1,0 @@
-database:
-  mongo:
-    uri: "mongodb://localhost:27017"
-    database: "Core"
-  redis:
-    uri: "redis://localhost:6379/0"
-    channel: "Core"

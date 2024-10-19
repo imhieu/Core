@@ -1,0 +1,29 @@
+chat-format: "{profile}&f: {message}"
+
+packets:
+  profile:
+    create: "&9Profile Update &7-> &eProfile Created &7-> {profile}"
+    update: "&9Profile Update &7-> &ePermissions Updated &7-> {profile}"
+  rank:
+    create: "&9Network Update &7-> &eRank Created &7-> {rank}"
+    update: "&9Network Update &7-> &eRank Updated &7-> {rank}"
+    delete: "&9Network Update &7-> &eRank Deleted &7-> {rank}"
+  tag:
+    create: "&9Network Update &7-> &eTag Created &7-> {tag}"
+    update: "&9Network Update &7-> &eTag Updated &7-> {tag}"
+    delete: "&9Network Update &7-> &eTag Deleted &7-> {tag}"
+  punishment:
+    broadcast: "&7[Silent] {target} &awas {context} &aby {executor}&a."
+    silent-broadcast: "{target} &awas {context} &aby {executor}&a."
+    message:
+      blacklist: "&cYour account is blacklisted from the Hieu Network.\nIf you feel this punishment is unjust, you may appeal at:\n&ehttps://www.hieu.com"
+      perm-ban: "&cYour account is permanently banned from the Hieu Network.\nIf you feel this punishment is unjust, you may appeal at:\n&ehttps://www.hieu.com"
+      temp-ban: "&cYour account is temporarily banned from the Hieu Network.\nIf you feel this punishment is unjust, you may appeal at:\n&ehttps://www.hieu.com&e\nThis expires in {duration}."
+      kick: "&cYou were kicked from the Hieu Network.\n&eReason: &e{reason}."
+      perm-mute: "&cYou are permanently muted by {executor}&c.\nReason: &e{reason}&c."
+      temp-mute: "&cYou are temporarily muted by {executor} &cfor &e{duration}&c.\nReason: &e{reason}&c."
+      warn: "&cYou were warned by {executor}&c.\nReason: &e{reason}&c."
+  staff:
+    join: "&9[Staff] {profile} &bjoined the server (to {server})"
+    leave: "&9[Staff] {profile} &bleft the server (from {server})"
+    chat: "&9[Staff] &7[{server}] {profile}&b: {message}"
