@@ -19,7 +19,7 @@ import java.util.List;
 
 public class PermissionsCommand {
 
-    @Command(name = "add", desc = "update profile permissions", usage = "<profile>")
+    @Command(name = "", desc = "view profile permissions", usage = "<profile>")
     @Require("*")
     public void command(@Sender CommandSender sender, Profile target){
         List<String> permissions = target.getPermissions();
