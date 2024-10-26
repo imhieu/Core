@@ -52,6 +52,7 @@ me\hieu\core\punishment\command\pardon\UnbanCommand.class
 me\hieu\core\profile\disguise\menu\button\DisguiseRankButton.class
 me\hieu\core\grant\command\GrantsCommand.class
 me\hieu\core\redis\RedisHandler$1.class
+me\hieu\core\CoreAPI.class
 me\hieu\core\punishment\command\BlacklistCommand.class
 me\hieu\core\tag\packet\TagUpdateDisplayPacket.class
 me\hieu\core\punishment\command\MuteCommand.class

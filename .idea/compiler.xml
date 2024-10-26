@@ -11,6 +11,8 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bukkit" target="1.8" />
+      <module name="Core-Velocity" target="11" />
+      <module name="velocity" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

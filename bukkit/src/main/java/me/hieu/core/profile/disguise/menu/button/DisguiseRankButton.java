@@ -37,7 +37,7 @@ public class DisguiseRankButton extends Button {
         lore.add(CC.CHAT_BAR);
         lore.add("&9Click to disguise as &r" + rank.getFormattedRank() + " &9rank.");
         lore.add(CC.CHAT_BAR);
-        return new ItemBuilder(Core.getInstance().getChatColorHandler().getMaterialMap().get(rank.getColor())).name("").lore(lore).build();
+        return new ItemBuilder(Core.getInstance().getChatColorHandler().getMaterialMap().get(rank.getColor())).name(" ").lore(lore).build();
     }
 
     @Override

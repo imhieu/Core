@@ -36,7 +36,7 @@ public class DisguisePlayerButton extends Button {
         lore.add(CC.CHAT_BAR);
         lore.add("&9Click to disguise as &a" + name + "&9.");
         lore.add(CC.CHAT_BAR);
-        return new SkullBuilder(name).name("").lore(lore).build();
+        return new SkullBuilder(name).name(" ").lore(lore).build();
     }
 
     @Override
