@@ -51,8 +51,7 @@ public class RedisHandler {
                         packet.onReceived();
                     }
                 }, channel);
-            } catch (Exception e) {
-                e.printStackTrace(); // Handle connection issues
+            } catch (Exception ignored) {
             }
         }).start();
     }
