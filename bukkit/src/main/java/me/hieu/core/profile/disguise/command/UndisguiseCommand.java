@@ -19,7 +19,7 @@ public class UndisguiseCommand {
     @Command(name = "", desc = "undisguise")
     @Require("*")
     public void command(@Sender Player player){
-        Profile profile = Core.getInstance().profileHandler.getProfileByUniqueId(player.getUniqueId());
+        Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
         if (profile.isDisguised()){
             profile.setDisguiseProfile(null);
             profile.save();
