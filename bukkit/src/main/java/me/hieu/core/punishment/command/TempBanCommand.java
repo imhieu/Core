@@ -23,7 +23,7 @@ public class TempBanCommand {
     PunishmentType type = PunishmentType.TEMP_BAN;
 
     @Command(name = "", desc = "temp ban player", usage = "<player> <duration> <reason> [-s]")
-    @Require("*")
+    @Require("core.tempban")
     public void command(@Sender CommandSender sender, Profile target, String time, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

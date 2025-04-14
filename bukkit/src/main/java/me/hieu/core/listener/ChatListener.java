@@ -37,9 +37,9 @@ public class ChatListener implements Listener {
             event.setCancelled(true);
             return;
         }
-        if (profile.getStaffOption().isStaffChatEnabled() && player.hasPermission("*")){
+        if (profile.getStaffOption().isStaffChatEnabled() && player.hasPermission("core.staff")){
             String message = CC.translate(Locale.STAFF_CHAT.get().replace("{server}", Bukkit.getName()).replace("{profile}", profile.getFormattedName())).replace("{message}", event.getMessage());
-            BroadcastPacket packet = new BroadcastPacket(message, "*");
+            BroadcastPacket packet = new BroadcastPacket(message, "core.staff");
             Core.getInstance().getRedisHandler().sendPacket(packet);
             event.setCancelled(true);
             return;

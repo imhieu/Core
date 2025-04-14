@@ -20,7 +20,7 @@ public class KickCommand {
     PunishmentType type = PunishmentType.KICK;
 
     @Command(name = "", desc = "kick player", usage = "<player> <reason> [-s]")
-    @Require("*")
+    @Require("core.kick")
     public void command(@Sender CommandSender sender, Player target, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

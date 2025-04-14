@@ -22,7 +22,7 @@ public class MuteCommand {
     PunishmentType type = PunishmentType.PERM_MUTE;
 
     @Command(name = "", desc = "perm mute player", usage = "<player> <reason> [-s]")
-    @Require("*")
+    @Require("core.mute")
     public void command(@Sender CommandSender sender, Profile target, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

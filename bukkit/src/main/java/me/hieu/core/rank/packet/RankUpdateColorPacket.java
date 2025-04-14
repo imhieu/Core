@@ -33,7 +33,7 @@ public class RankUpdateColorPacket extends Packet {
         Rank rank = rankHandler.getRankByUniqueId(rankUniqueId);
         rank.setColor(color);
         rank.save();
-        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "core.rank");
     }
 
     @Override

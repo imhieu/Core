@@ -17,7 +17,7 @@ import org.bukkit.command.CommandSender;
 public class PermissionCommand {
 
     @Command(name = "add", desc = "update profile permissions", usage = "<profile> <permission>")
-    @Require("*")
+    @Require("core.permissions")
     public void add(@Sender CommandSender sender, Profile target, String permission){
         if (target.getPermissions().contains(permission)){
             sender.sendMessage(CC.translate(target.getFormattedName() + " &calready has the permission '" + permission + "'."));
@@ -28,7 +28,7 @@ public class PermissionCommand {
     }
 
     @Command(name = "remove", desc = "update profile permissions", usage = "<profile> <permission>")
-    @Require("*")
+    @Require("core.permissions")
     public void remove(@Sender CommandSender sender, Profile target, String permission){
         if (!target.getPermissions().contains(permission)){
             sender.sendMessage(CC.translate(target.getFormattedName() + " &cdoesn't have the permission '" + permission + "'."));

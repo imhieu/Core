@@ -25,7 +25,7 @@ public class RankCreatePacket extends Packet {
     public void onReceived() {
         Rank rank = new Rank(name);
         rank.save();
-        Core.broadcast(CC.translate(Locale.RANK_CREATE.get().replace("{rank}", rank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_CREATE.get().replace("{rank}", rank.getFormattedRank())), "core.ranks");
     }
 
     @Override

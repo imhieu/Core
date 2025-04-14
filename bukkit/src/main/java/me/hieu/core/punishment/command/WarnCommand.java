@@ -21,7 +21,7 @@ public class WarnCommand {
     PunishmentType type = PunishmentType.PERM_BAN;
 
     @Command(name = "", desc = "warn player", usage = "<player> <reason> [-s]")
-    @Require("*")
+    @Require("core.warn")
     public void command(@Sender CommandSender sender, Profile target, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

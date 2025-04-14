@@ -38,7 +38,7 @@ public class ProfileUpdatePermissionsPacket extends Packet {
             profile.getPermissions().remove(permission);
         }
         profile.save();
-        Core.broadcast(CC.translate(Locale.PROFILE_UPDATE.get().replace("{profile}", profile.getFormattedName())), "*");
+        Core.broadcast(CC.translate(Locale.PROFILE_UPDATE.get().replace("{profile}", profile.getFormattedName())), "core.profiles");
         Player player = Bukkit.getPlayer(uniqueId);
         if (player == null) return;
         profile.calibratePermissions();

@@ -24,7 +24,7 @@ import java.util.UUID;
 public class GrantCommand {
 
     @Command(name = "", desc = "grant rank", usage = "<player> <rank> <duration> <reason>")
-    @Require("*")
+    @Require("core.grant")
     public void command(@Sender CommandSender sender, Profile target, Rank rank, String time, @Text String reason){
         UUID addedBy;
         if (sender instanceof Player){

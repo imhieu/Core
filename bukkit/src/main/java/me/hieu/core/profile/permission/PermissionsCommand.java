@@ -20,7 +20,7 @@ import java.util.List;
 public class PermissionsCommand {
 
     @Command(name = "", desc = "view profile permissions", usage = "<profile>")
-    @Require("*")
+    @Require("core.permissions")
     public void command(@Sender CommandSender sender, Profile target){
         List<String> permissions = target.getPermissions();
         if (permissions.isEmpty()){

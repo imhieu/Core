@@ -51,11 +51,11 @@ public class ProfileListener implements Listener {
         profile.save();
         plugin.getProfileHandler().getProfiles().add(profile);
         profile.calibratePermissions();
-        if (!player.hasPermission("*")) return;
+        if (!player.hasPermission("core.staff")) return;
         String join = CC.translate(Locale.STAFF_JOIN.get())
                 .replace("{profile}", profile.getFormattedName())
                 .replace("{server}", Bukkit.getName());
-        BroadcastPacket packet = new BroadcastPacket(join, "*");
+        BroadcastPacket packet = new BroadcastPacket(join, "core.staff");
         plugin.getRedisHandler().sendPacket(packet);
     }
 
@@ -68,11 +68,11 @@ public class ProfileListener implements Listener {
         Profile profile = handler.getProfileByUniqueId(uuid);
         profile.save();
         handler.getProfiles().remove(profile);
-        if (!player.hasPermission("*")) return;
+        if (!player.hasPermission("core.staff")) return;
         String join = CC.translate(Locale.STAFF_LEAVE.get())
                 .replace("{profile}", profile.getFormattedName())
                 .replace("{server}", Bukkit.getName());
-        BroadcastPacket packet = new BroadcastPacket(join, "*");
+        BroadcastPacket packet = new BroadcastPacket(join, "core.staff");
         plugin.getRedisHandler().sendPacket(packet);
     }
 

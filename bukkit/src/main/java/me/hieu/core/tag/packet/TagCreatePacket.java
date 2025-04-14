@@ -23,7 +23,7 @@ public class TagCreatePacket extends Packet {
     public void onReceived() {
         Tag tag = new Tag(name);
         tag.save();
-        Core.broadcast(CC.translate(Locale.TAG_CREATE.get().replace("{tag}", tag.getFormattedName())), "*");
+        Core.broadcast(CC.translate(Locale.TAG_CREATE.get().replace("{tag}", tag.getFormattedName())), "core.tags");
     }
 
     @Override

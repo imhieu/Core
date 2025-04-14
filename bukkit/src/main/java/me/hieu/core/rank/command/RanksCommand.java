@@ -19,7 +19,7 @@ import java.util.List;
 public class RanksCommand {
 
     @Command(name = "", desc = "view all ranks")
-    @Require("*")
+    @Require("core.ranks")
     public void command(@Sender CommandSender sender){
         List<Rank> ranks = Core.getInstance().getRankHandler().getRanks();
         Collections.sort(ranks);

@@ -30,7 +30,7 @@ public class RankUpdatePrefixPacket extends Packet {
         Rank rank = Core.getInstance().getRankHandler().getRankByUniqueId(rankUniqueId);
         rank.setPrefix(prefix);
         rank.save();
-        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "core.ranks");
     }
 
     @Override

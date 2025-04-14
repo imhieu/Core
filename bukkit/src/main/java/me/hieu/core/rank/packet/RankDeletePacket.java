@@ -26,7 +26,7 @@ public class RankDeletePacket extends Packet {
     @Override
     public void onReceived() {
         Rank rank = Core.getInstance().getRankHandler().getRankByUniqueId(rankUniqueId);
-        Core.broadcast(CC.translate(Locale.RANK_DELETE.get().replace("{rank}", rank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_DELETE.get().replace("{rank}", rank.getFormattedRank())), "core.ranks");
         rank.delete();
     }
 

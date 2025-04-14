@@ -18,7 +18,7 @@ import org.bukkit.command.CommandSender;
 public class RankCommand {
 
     @Command(name = "create", desc = "create new rank", usage = "<name>")
-    @Require("*")
+    @Require("core.ranks")
     public void create(@Sender CommandSender sender, String name){
         Rank rank = Core.getInstance().getRankHandler().getRankByName(name);
         if (rank != null){
@@ -30,35 +30,35 @@ public class RankCommand {
     }
 
     @Command(name = "setcolor", desc = "update rank color", usage = "<rank> <color>")
-    @Require("*")
+    @Require("core.ranks")
     public void color(@Sender CommandSender sender, Rank rank, ChatColor color){
         RankUpdateColorPacket packet = new RankUpdateColorPacket(rank.getUniqueId(), color);
         Core.getInstance().getRedisHandler().sendPacket(packet);
     }
 
     @Command(name = "setweight", desc = "update rank weight", usage = "<rank> <weight>")
-    @Require("*")
+    @Require("core.ranks")
     public void weight(@Sender CommandSender sender, Rank rank, int weight){
         RankUpdateWeightPacket packet = new RankUpdateWeightPacket(rank.getUniqueId(), weight);
         Core.getInstance().getRedisHandler().sendPacket(packet);
     }
 
     @Command(name = "setprefix", desc = "update rank prefix", usage = "<rank> <prefix>")
-    @Require("*")
+    @Require("core.ranks")
     public void prefix(@Sender CommandSender sender, Rank rank, String prefix){
         RankUpdatePrefixPacket packet = new RankUpdatePrefixPacket(rank.getUniqueId(), prefix);
         Core.getInstance().getRedisHandler().sendPacket(packet);
     }
 
     @Command(name = "setsuffix", desc = "update rank suffix", usage = "<rank> <suffix>")
-    @Require("*")
+    @Require("core.ranks")
     public void suffix(@Sender CommandSender sender, Rank rank, String suffix){
         RankUpdateSuffixPacket packet = new RankUpdateSuffixPacket(rank.getUniqueId(), suffix);
         Core.getInstance().getRedisHandler().sendPacket(packet);
     }
 
     @Command(name = "addperm", desc = "update rank permissions", usage = "<rank> <permission>")
-    @Require("*")
+    @Require("core.ranks")
     public void addperm(@Sender CommandSender sender, Rank rank, String permission){
         if (rank.getPermissions().contains(permission)){
             sender.sendMessage(CC.translate("&cThe rank with the name '" + rank.getName() + "' already has the permission '" + permission + "'."));
@@ -69,7 +69,7 @@ public class RankCommand {
     }
 
     @Command(name = "removeperm", desc = "update rank permissions", usage = "<rank> <permission>")
-    @Require("*")
+    @Require("core.ranks")
     public void removeperm(@Sender CommandSender sender, Rank rank, String permission){
         if (!rank.getPermissions().contains(permission)){
             sender.sendMessage(CC.translate("&cThe rank with the name '" + rank.getName() + "' doesn't have the permission '" + permission + "'."));
@@ -80,7 +80,7 @@ public class RankCommand {
     }
 
     @Command(name = "inherit", desc = "update rank inheritances", usage = "<parent> <child>")
-    @Require("*")
+    @Require("core.ranks")
     public void inherit(@Sender CommandSender sender, Rank parentRank, Rank childRank){
         if (parentRank == childRank){
             sender.sendMessage(CC.translate("&cThe parent rank can't be the same as the child rank."));
@@ -95,7 +95,7 @@ public class RankCommand {
     }
 
     @Command(name = "uninherit", desc = "update rank inheritances", usage = "<parent> <child>")
-    @Require("*")
+    @Require("core.ranks")
     public void uninherit(@Sender CommandSender sender, Rank parentRank, Rank childRank){
         if (!parentRank.getInheritances().contains(childRank.getUniqueId())){
             sender.sendMessage(CC.translate("&cThe parent rank with the name '" + parentRank.getName() + "' isn't inheriting the child rank with the name '" + childRank.getName() + "'."));
@@ -106,7 +106,7 @@ public class RankCommand {
     }
 
     @Command(name = "delete", desc = "delete rank", usage = "<rank>")
-    @Require("*")
+    @Require("core.ranks")
     public void delete(@Sender CommandSender sender, Rank rank){
         Core plugin = Core.getInstance();
         if (rank == null){

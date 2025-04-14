@@ -20,7 +20,7 @@ import org.bukkit.command.CommandSender;
 public class TagCommand {
 
     @Command(name = "create", desc = "create tag", usage = "<name>")
-    @Require("*")
+    @Require("core.tags")
     public void create(@Sender CommandSender sender, String name){
         Tag tag = Core.getInstance().getTagHandler().getTagByName(name);
         if (tag != null){
@@ -32,14 +32,14 @@ public class TagCommand {
     }
 
     @Command(name = "setcolor", desc = "update tag color", usage = "<tag> <color>")
-    @Require("*")
+    @Require("core.tags")
     public void color(@Sender CommandSender sender, Tag tag, ChatColor color){
         TagUpdateColorPacket packet = new TagUpdateColorPacket(tag.getUniqueId(), color);
         Core.getInstance().getRedisHandler().sendPacket(packet);
     }
 
     @Command(name = "setdisplay", desc = "update tag display", usage = "<tag> <display>")
-    @Require("*")
+    @Require("core.tags")
     public void display(@Sender CommandSender sender, Tag tag, String display){
         TagUpdateDisplayPacket packet = new TagUpdateDisplayPacket(tag.getUniqueId(), display);
         Core.getInstance().getRedisHandler().sendPacket(packet);

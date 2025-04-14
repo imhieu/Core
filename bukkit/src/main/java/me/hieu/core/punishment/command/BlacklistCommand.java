@@ -22,7 +22,7 @@ public class BlacklistCommand {
     PunishmentType type = PunishmentType.BLACKLIST;
 
     @Command(name = "", desc = "blacklist player", usage = "<player> <reason> [-s]")
-    @Require("*")
+    @Require("core.blacklist")
     public void command(@Sender CommandSender sender, Profile target, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

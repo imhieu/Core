@@ -15,7 +15,7 @@ import org.bukkit.command.CommandSender;
 public class AlertCommand {
 
     @Command(name = "", desc = "broadcast message", usage = "<message>")
-    @Require("*")
+    @Require("core.alert")
     public void command(@Sender CommandSender sender, @Text String message, @Flag('r') boolean raw){
         RedisHandler handler = Core.getInstance().getRedisHandler();
         if (raw){

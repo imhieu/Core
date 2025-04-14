@@ -40,7 +40,7 @@ public class RankUpdateInheritancePacket extends Packet {
             parentRank.getInheritances().remove(childRankUniqueId);
         }
         parentRank.save();
-        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", parentRank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", parentRank.getFormattedRank())), "core.ranks");
         for (Player player : Bukkit.getOnlinePlayers()){
             Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
             if (profile.getActiveGrant().getRank().getUniqueId().equals(parentRankUniqueId)){

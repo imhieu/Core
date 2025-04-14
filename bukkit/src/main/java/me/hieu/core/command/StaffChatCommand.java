@@ -17,7 +17,7 @@ import org.bukkit.entity.Player;
 public class StaffChatCommand {
 
     @Command(name = "", desc = "staff chat", usage = "[message]")
-    @Require("*")
+    @Require("core.staff")
     public void command(@Sender Player player, @OptArg() @Text String message){
         Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
         if (message.isEmpty()){
@@ -26,7 +26,7 @@ public class StaffChatCommand {
             return;
         }
         String broadcastMessage = CC.translate(Locale.STAFF_CHAT.get().replace("{server}", Bukkit.getName()).replace("{profile}", profile.getFormattedName())).replace("{message}", message);
-        BroadcastPacket packet = new BroadcastPacket(broadcastMessage, "*");
+        BroadcastPacket packet = new BroadcastPacket(broadcastMessage, "core.staff");
         Core.getInstance().getRedisHandler().sendPacket(packet);
     }
 

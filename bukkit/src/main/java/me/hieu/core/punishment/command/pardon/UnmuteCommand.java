@@ -24,7 +24,7 @@ public class UnmuteCommand {
     PunishmentType tempMuteType = PunishmentType.TEMP_MUTE;
 
     @Command(name = "", desc = "unban player", usage = "<player> <reason> [-s]")
-    @Require("*")
+    @Require("core.unmute")
     public void command(@Sender CommandSender sender, Profile target, @Text String reason, @Flag('s') boolean silent){
         UUID pardonedBy;
         if (sender instanceof Player){

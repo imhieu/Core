@@ -39,7 +39,7 @@ public class RankUpdatePermissions extends Packet {
             rank.getPermissions().remove(permission);
         }
         rank.save();
-        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "core.ranks");
         for (Player player : Bukkit.getOnlinePlayers()){
             Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
             if (profile.getActiveGrant().getRank().getName().equalsIgnoreCase(rank.getName())){

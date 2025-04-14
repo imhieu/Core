@@ -28,7 +28,7 @@ public class TagUpdateDisplayPacket extends Packet {
         Tag tag = Core.getInstance().getTagHandler().getTagByUniqueId(tagUniqueId);
         tag.setDisplay(display);
         tag.save();
-        Core.broadcast(CC.translate(Locale.TAG_UPDATE.get().replace("{tag}", tag.getFormattedName())), "*");
+        Core.broadcast(CC.translate(Locale.TAG_UPDATE.get().replace("{tag}", tag.getFormattedName())), "core.tags");
     }
 
     @Override

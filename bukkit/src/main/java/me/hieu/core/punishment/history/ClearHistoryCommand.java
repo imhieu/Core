@@ -17,7 +17,7 @@ import org.bukkit.command.CommandSender;
 public class ClearHistoryCommand {
 
     @Command(name = "", desc = "clear history", usage = "<player>")
-    @Require("*")
+    @Require("core.history")
     public void command(@Sender CommandSender sender, Profile target){
         sender.sendMessage(CC.translate("&aHistory of &r" + target.getFormattedName() + " &ahas been cleared."));
         HistoryClearPacket packet = new HistoryClearPacket(target.getUniqueId());

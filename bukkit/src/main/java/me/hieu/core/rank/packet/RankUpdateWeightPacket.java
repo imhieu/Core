@@ -30,7 +30,7 @@ public class RankUpdateWeightPacket extends Packet {
         Rank rank = Core.getInstance().rankHandler.getRankByUniqueId(rankUniqueId);
         rank.setWeight(weight);
         rank.save();
-        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "*");
+        Core.broadcast(CC.translate(Locale.RANK_UPDATE.get().replace("{rank}", rank.getFormattedRank())), "core.ranks");
     }
 
     @Override

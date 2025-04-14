@@ -14,7 +14,7 @@ import org.bukkit.entity.Player;
 public class TagsCommand {
 
     @Command(name = "", desc = "view all tags")
-    @Require("*")
+    @Require("")
     public void command(@Sender Player player){
         new TagsMenu().openMenu(player);
     }

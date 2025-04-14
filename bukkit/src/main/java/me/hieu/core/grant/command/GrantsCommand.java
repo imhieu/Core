@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
 public class GrantsCommand {
 
     @Command(name = "", desc = "player grants", usage = "<player>")
-    @Require("*")
+    @Require("core.grants")
     public void command(@Sender Player player, Profile target){
         new GrantsMenu(target).openMenu(player);
     }

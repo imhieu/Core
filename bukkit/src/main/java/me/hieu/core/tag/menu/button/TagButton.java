@@ -31,7 +31,7 @@ public class TagButton extends Button {
         Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
         List<String> lore = new ArrayList<>();
         lore.add(CC.MENU_BAR);
-        if (player.hasPermission("*")){
+        if (player.hasPermission("tag." + tag.getName().toLowerCase())){
             if (profile.getTag() == null) {
                 lore.add("&aClick to select &r" + tag.getFormattedName() + " &atag!");
             } else if (profile.getTag().getUniqueId() == tag.getUniqueId()){
@@ -47,7 +47,7 @@ public class TagButton extends Button {
     @Override
     public void clicked(Player player, ClickType clickType) {
         Profile profile = Core.getInstance().getProfileHandler().getProfileByUniqueId(player.getUniqueId());
-        if (player.hasPermission("*")){
+        if (player.hasPermission("tag." + tag.getName().toLowerCase())){
             if (profile.getTag() == null) {
                 profile.setTag(tag);
             } else if (profile.getTag().getUniqueId() == tag.getUniqueId()){

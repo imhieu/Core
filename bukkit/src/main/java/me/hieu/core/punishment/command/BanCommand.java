@@ -22,7 +22,7 @@ public class BanCommand {
     PunishmentType type = PunishmentType.PERM_BAN;
 
     @Command(name = "", desc = "perm ban player", usage = "<player> <reason> [-s]")
-    @Require("*")
+    @Require("core.ban")
     public void command(@Sender CommandSender sender, Profile target, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

@@ -23,7 +23,7 @@ public class TempMuteCommand {
     PunishmentType type = PunishmentType.TEMP_MUTE;
 
     @Command(name = "", desc = "temp mute player", usage = "<player> <duration> <reason> [-s]")
-    @Require("*")
+    @Require("core.tempmute")
     public void command(@Sender CommandSender sender, Profile target, String time, @Text String reason, @Flag('s') boolean silent){
         UUID addedBy;
         if (sender instanceof Player){

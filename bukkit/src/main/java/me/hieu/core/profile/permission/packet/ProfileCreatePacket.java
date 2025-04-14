@@ -28,7 +28,7 @@ public class ProfileCreatePacket extends Packet {
     @Override
     public void onReceived() {
         Profile profile = Core.getInstance().profileHandler.getProfileByUniqueId(uniqueId);
-        Core.broadcast(CC.translate(Locale.PROFILE_CREATE.get().replace("{profile}", profile.getFormattedName())), "*");
+        Core.broadcast(CC.translate(Locale.PROFILE_CREATE.get().replace("{profile}", profile.getFormattedName())), "core.profiles");
     }
 
     @Override

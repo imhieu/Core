@@ -17,7 +17,7 @@ import org.bukkit.command.CommandSender;
 public class ClearGrantsCommand {
 
     @Command(name = "", desc = "clear grants", usage = "<player>")
-    @Require("*")
+    @Require("core.grants")
     public void command(@Sender CommandSender sender, Profile target){
         sender.sendMessage(CC.translate("&aGrants of &r" + target.getFormattedName() + " &ahas been cleared."));
         GrantsClearPacket packet = new GrantsClearPacket(target.getUniqueId());

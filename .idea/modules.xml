@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Core.iml" filepath="$PROJECT_DIR$/Core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bukkit/Core-Bukkit.iml" filepath="$PROJECT_DIR$/bukkit/Core-Bukkit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bukkit/Core-Bukkit (1).iml" filepath="$PROJECT_DIR$/bukkit/Core-Bukkit (1).iml" />
     </modules>
   </component>
 </project>

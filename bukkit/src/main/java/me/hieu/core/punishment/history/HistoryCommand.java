@@ -15,7 +15,7 @@ import org.bukkit.entity.Player;
 public class HistoryCommand {
 
     @Command(name = "", desc = "player history", usage = "<player>")
-    @Require("*")
+    @Require("core.history")
     public void command(@Sender Player player, Profile target){
         new HistoryMenu(target).openMenu(player);
     }
