@@ -129,6 +129,10 @@ public class Profile implements Comparable<Profile> {
             Type type = new TypeToken<List<String>>(){}.getType();
             permissions = new Gson().fromJson(document.getString("permissions"), type);
         }
+        Document staffOptionsDocument = (Document) document.get("staffOptions");
+        if (staffOptionsDocument != null){
+            staffOption.setStaffChatEnabled(staffOptionsDocument.getBoolean("staffChat"));
+        }
     }
 
     public void save(){
@@ -147,6 +151,11 @@ public class Profile implements Comparable<Profile> {
         }
         if (!permissions.isEmpty()){
             document.append("permissions", gson.toJson(permissions));
+        }
+        if (!staffOption.isStaffChatEnabled()){
+            Document staffOptionsDocument = new Document();
+            staffOptionsDocument.append("staffChat", false);
+            document.append("staffOptions", staffOptionsDocument);
         }
         Bson filter = Filters.eq("uniqueId", uniqueId.toString());
         Core.getInstance().getProfileHandler().getCollection().replaceOne(filter, document, new ReplaceOptions().upsert(true));
