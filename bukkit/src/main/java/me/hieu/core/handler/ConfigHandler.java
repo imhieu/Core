@@ -17,8 +17,8 @@ import java.io.IOException;
 @Getter
 public class ConfigHandler {
 
-    private File defaultConfig, langConfig, disguiseConfig;
-    private FileConfiguration defaultConfigz, langConfigz, disguiseConfigz;
+    private File defaultConfig, langConfig;
+    private FileConfiguration defaultConfigz, langConfigz;
 
     public ConfigHandler(){
         Core plugin = Core.getInstance();
@@ -41,17 +41,6 @@ public class ConfigHandler {
         langConfigz = new YamlConfiguration();
         try {
             langConfigz.load(langConfig);
-        } catch (IOException | InvalidConfigurationException e) {
-            e.printStackTrace();
-        }
-        disguiseConfig = new File(plugin.getDataFolder(), "disguise.yml");
-        if (!disguiseConfig.exists()) {
-            disguiseConfig.getParentFile().mkdirs();
-            plugin.saveResource("disguise.yml", false);
-        }
-        disguiseConfigz = new YamlConfiguration();
-        try {
-            disguiseConfigz.load(disguiseConfig);
         } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }

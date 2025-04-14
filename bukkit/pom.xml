@@ -76,13 +76,6 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>xyz.haoshoku.nick</groupId>
-            <artifactId>nickapi</artifactId>
-            <version>7.2-SNAPSHOT</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/NickAPI-v7.3.jar</systemPath>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.30</version>

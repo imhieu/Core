@@ -51,7 +51,6 @@ public class ProfileListener implements Listener {
         profile.save();
         plugin.getProfileHandler().getProfiles().add(profile);
         profile.calibratePermissions();
-        profile.updateDisguise();
         if (!player.hasPermission("*")) return;
         String join = CC.translate(Locale.STAFF_JOIN.get())
                 .replace("{profile}", profile.getFormattedName())

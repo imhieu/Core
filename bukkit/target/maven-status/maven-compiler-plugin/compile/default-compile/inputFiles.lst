@@ -9,7 +9,6 @@ C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\Rank.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\grant\Grant.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\history\menu\HistoryMenu.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\command\RanksCommand.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\command\UndisguiseCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\tag\Tag.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\packet\RankDeletePacket.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\grant\command\GrantsCommand.java
@@ -19,21 +18,18 @@ C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\tag\command\TagsCo
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\ProfileProvider.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\command\KickCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\tag\TagProvider.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\menu\button\DisguiseRankButton.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\redis\RedisHandler.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\command\pardon\UnblacklistCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\ProfileHandler.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\tag\packet\TagCreatePacket.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\tag\menu\TagsMenu.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\grant\menu\GrantsMenu.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\menu\button\DisguisePlayerButton.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\permission\packet\ProfileCreatePacket.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\packet\RankUpdatePrefixPacket.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\command\ListCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\history\ClearHistoryCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\redis\packet\Packet.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\procedure\ProcedureType.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\menu\DisguisePlayerMenu.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\permission\PermissionsCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\option\ProfileStaffOption.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\command\MuteCommand.java
@@ -61,7 +57,6 @@ C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\procedure\Procedur
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\Core.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\ProfileListener.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\history\packet\HistoryClearPacket.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\menu\DisguiseRankMenu.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\command\WarnCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\RankHandler.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\packet\RankUpdateSuffixPacket.java
@@ -75,7 +70,6 @@ C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\command
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\packet\RankUpdateInheritancePacket.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\packet\PunishmentAddPacket.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\command\StaffChatCommand.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\DisguiseProfile.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\Locale.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\Profile.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\tag\TagHandler.java
@@ -85,6 +79,5 @@ C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\Punishm
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\rank\packet\RankUpdatePermissions.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\command\TempBanCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\punishment\Punishment.java
-C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\profile\disguise\command\DisguiseCommand.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\handler\ConfigHandler.java
 C:\Hieu's Stuff\1.21.1\Core\bukkit\src\main\java\me\hieu\core\grant\packet\GrantsClearPacket.java
