@@ -7,6 +7,8 @@ import me.hieu.libraries.drink.parametric.DrinkProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.Nonnull;
+import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +31,16 @@ public class ProfileProvider extends DrinkProvider<Profile> {
         return false;
     }
 
-    @Nullable
+    @javax.annotation.Nullable
     @Override
-    public Profile provide(@NotNull CommandArg commandArg, @NotNull List<? extends Annotation> list) throws CommandExitMessage {
-        String name = commandArg.get();
-        Profile profile = Core.getInstance().getProfileHandler().getProfileByName(name);
-        if (profile != null) return profile;
-        throw new CommandExitMessage("No profile with the name '" + name + "'.");
+    public Profile provide(@Nonnull CommandArg arg, @Nonnull List<? extends Annotation> annotations) throws CommandExitMessage {
+        String name = arg.get();
+        if (name == null) return null;
+        try {
+            return Core.getInstance().getProfileHandler().getProfileByName(name);
+        } catch (Exception e) {
+            throw new CommandExitMessage("No profile with the name '" + name + "'.");
+        }
     }
 
     @Override

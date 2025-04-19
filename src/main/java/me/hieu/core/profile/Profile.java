@@ -22,6 +22,7 @@ import org.bson.conversions.Bson;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
+import org.bukkit.permissions.PermissionAttachmentInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
@@ -87,6 +88,16 @@ public class Profile implements Comparable<Profile> {
         List<String> permissions = new ArrayList<>(this.permissions);
         Player player = Bukkit.getPlayer(uniqueId);
         if (player == null) return;
+        // Clear any permissions set for this player by this plugin
+        for (PermissionAttachmentInfo attachmentInfo : player.getEffectivePermissions()) {
+            if (attachmentInfo.getAttachment() == null || attachmentInfo.getAttachment().getPlugin() == null ||
+                    !attachmentInfo.getAttachment().getPlugin().equals(Core.getInstance())) {
+                continue;
+            }
+            attachmentInfo.getAttachment().getPermissions().forEach((permission, value) -> {
+                attachmentInfo.getAttachment().unsetPermission(permission);
+            });
+        }
         PermissionAttachment attachment = player.addAttachment(Core.getInstance());
         Rank rank = getActiveGrant().getRank();
         permissions.addAll(rank.getAllPermissions());
